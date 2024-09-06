@@ -1,19 +1,67 @@
 import { Component } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-invoice',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-invoice.component.html',
   styleUrl: './create-invoice.component.scss',
 })
 export class CreateInvoiceComponent {
 
+  invoiceForm: FormGroup;
+
+  constructor() {
+    this.invoiceForm = new FormGroup({
+      companyName: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      clientName: new FormControl('', Validators.required),
+      clientAddress: new FormControl('', Validators.required),
+      items: new FormArray([this.createItem()])
+    });
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  createItem(): FormGroup {
+    return new FormGroup({
+      description: new FormControl('', Validators.required),
+      quantity: new FormControl(1, Validators.required),
+      price: new FormControl(0, Validators.required)
+    });
+  }
+
+  addItem(): void {
+    (this.invoiceForm.get('items') as FormArray).push(this.createItem());
+  }
+
+  removeItem(index: number): void {
+    (this.invoiceForm.get('items') as FormArray).removeAt(index);
+  }
+
+  get items(): FormArray {
+    return this.invoiceForm.get('items') as FormArray;
+  }
+
+  calculateTotal(item: FormGroup): number {
+    const quantity = item.get('quantity')!.value || 0;
+    const price = item.get('price')!.value || 0;
+    return quantity * price;
+  }
+
+  onSubmit(): void {
+    console.log(this.invoiceForm.value);
+    // Add logic to save the invoice or generate PDF here
+  }
   
   public downloadInvoice() {
-    const BNAZANIN = "ქართული";
 
     const doc = new jsPDF({});
 

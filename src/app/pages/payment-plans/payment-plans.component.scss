@@ -1,0 +1,95 @@
+.pricing-container {
+  font-family: Arial, sans-serif;
+  //   max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.plans {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.plan-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+
+  &.active {
+    border: 2px solid #2ecc71;
+  }
+}
+
+.plan-header {
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.per-month {
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+
+  &.active-button {
+    background-color: #2ecc71;
+  }
+}
+
+.features {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.feature {
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.checkmark {
+  color: #2ecc71;
+  margin-right: 5px;
+}
+
+.promo-code {
+  margin-top: 30px;
+
+  input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+  }
+
+  button {
+    margin-left: 10px;
+  }
+}

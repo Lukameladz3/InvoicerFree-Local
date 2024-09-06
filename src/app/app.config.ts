@@ -7,6 +7,10 @@ import { getAnalytics } from "firebase/analytics";
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyDLWeYweJTtyHTb8a-YYY-g3vXC6peF_Zk",
   authDomain: "invoicer-free.firebaseapp.com",
@@ -21,5 +25,6 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 export const appConfig: ApplicationConfig = {
+
   providers: [provideRouter(routes), provideAnimationsAsync()]
 };

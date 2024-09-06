@@ -1,18 +1,18 @@
 <div class="app-container">
-  <nav class="navbar">
+  <nav class="navbar" #myIdentifier>
     <div class="navbar-brand">
       <!-- <img src="path-to-your-logo.png" alt="Kernel Logo" class="logo"> -->
-      <h3 class="brand">Invoicer</h3>
+      <h3 class="brand" routerLink="/">Invoicer</h3>
     </div>
     <div class="navbar-menu">
-      <button class="payment-plans">
-        <span> Payment Plans </span>
+      <button class="payment-plans"  routerLink="/payment-plans">
+        <span > Payment Plans </span>
       </button>
     </div>
   </nav>
 
   <div class="main-content">
-    <aside class="sidebar">
+    <aside class="sidebar" [style]="{ top: navHeight }">
       <span class="subscription-status">Annual Active - 208 days left</span>
 
       <div class="sidebar-content">
@@ -23,7 +23,7 @@
               alt=""
             />
           </div>
-          <div class="content">
+          <div class="company-content">
             <select>
               <option>LLC</option>
             </select>
@@ -33,7 +33,7 @@
 
         <ul class="sidebar-menu">
           <div class="new-invoice">
-            <button class="btn btn-success btn-block"><img src="../assets/Images/add_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg" alt=""> New Invoice</button>
+            <button routerLink="/create-invoice"  class="btn btn-success btn-block"><img src="../assets/Images/add_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg" alt=""> New Invoice</button>
           </div>
           <li class="active">
             <div class="sidebar-item">
