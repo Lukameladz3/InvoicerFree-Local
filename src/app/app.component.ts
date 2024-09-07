@@ -11,13 +11,16 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class AppComponent {
   title = 'Invoicer-Free';
-  navHeight: number = 0;
+  navHeight: number = 64;
 
-  @ViewChild('myIdentifier') myIdentifier: ElementRef | undefined;
+  @ViewChild('navbar') navbar: ElementRef | undefined;
 
   constructor() {}
 
   ngAfterViewInit(): void {
-    this.navHeight = this.myIdentifier!.nativeElement.offsetHeight;
+    if (this.navbar){
+      this.navHeight = this.navbar!.nativeElement.offsetHeight;
+
+    }
   }
 }
