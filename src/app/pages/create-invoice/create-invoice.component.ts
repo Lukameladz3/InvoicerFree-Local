@@ -5,6 +5,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormItemComponent } from '../../components/form-item/form-item.component';
+import { invoiceData } from '../../Interfaces/invoiceData';
 
 @Component({
   selector: 'app-create-invoice',
@@ -16,6 +17,7 @@ import { FormItemComponent } from '../../components/form-item/form-item.componen
 export class CreateInvoiceComponent {
   invoiceForm: FormGroup;
 
+  invoiceData : invoiceData | undefined;
   
 
   constructor() {
@@ -75,18 +77,22 @@ export class CreateInvoiceComponent {
 
   onSubmit(): void {
     console.log(this.invoiceForm.value);
-    console.log('hello world');
-    this.downloadInvoice();
+    this.invoiceData  = this.invoiceForm.value;
+    console.log(this.invoiceData);
+    
+    // this.invoiceForm.reset();
+    if (this.invoiceData)
+      this.downloadInvoice(this.invoiceData);
   }
 
-  public downloadInvoice() {
+  public downloadInvoice(invoiceData:invoiceData) {
     const doc = new jsPDF({});
 
     autoTable(doc, {
       body: [
         [
           {
-            content: 'Company brand',
+            content: `${invoiceData.SellerCompanyName}`,
             styles: {
               halign: 'left',
               fontSize: 20,
@@ -132,11 +138,12 @@ export class CreateInvoiceComponent {
           {
             content:
               'Seller:' +
-              '\nJohn Doe' +
-              '\nBilling Address line 1' +
-              '\nBilling Address line 2' +
-              '\nZip code - City' +
-              '\nCountry',
+              `\n${invoiceData.SellerCompanyName}` +
+              `\n${invoiceData.SellerTaxID}` +
+              `\n${invoiceData.SellerCity}` +
+              `\n${invoiceData.SellerAddress}` +
+              `\n${invoiceData.SellerEmail}` +
+              `\n${invoiceData.SellerPhone}`,
             styles: {
               halign: 'left',
             },
@@ -145,11 +152,13 @@ export class CreateInvoiceComponent {
           {
             content:
               'Buyer:' +
-              '\nCompany name' +
-              '\nShipping Address line 1' +
-              '\nShipping Address line 2' +
-              '\nZip code - City' +
-              '\nCountry',
+              `\n${invoiceData.BuyerName}` +
+              `\n${invoiceData.BuyerTaxID}` +
+              `\n${invoiceData.BuyerEmail}` +
+              `\n${invoiceData.BuyerCountry}` +
+              `\n${invoiceData.BuyerCity}` +
+              `\n${invoiceData.BuyerAddress}` +
+              `\n${invoiceData.BuyerPhone}`,
             styles: {
               halign: 'right',
             },
@@ -208,12 +217,16 @@ export class CreateInvoiceComponent {
     });
 
     autoTable(doc, {
-      head: [['Items', 'Category', 'Quantity', 'Price', 'Tax', 'Amount']],
+      head: [['Items', 'Quantity', 'Unit', 'Unity Price', 'VAT', 'Net Amount']],
       body: [
-        ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
-        ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
-        ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
-        ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
+        ...invoiceData.items.map((item) => [
+          item.Item,
+          item.Unit,
+          item.Quantity,
+          `$${item['Unity Price']}`,
+          `$${item.VAT}`,
+          `$${item['Net Amount']}`,
+        ]),
       ],
       theme: 'striped',
       headStyles: {
