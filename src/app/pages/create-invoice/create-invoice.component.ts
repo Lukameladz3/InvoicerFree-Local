@@ -1,40 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormItemComponent } from '../../components/form-item/form-item.component';
 
 @Component({
   selector: 'app-create-invoice',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormItemComponent],
   templateUrl: './create-invoice.component.html',
   styleUrl: './create-invoice.component.scss',
 })
 export class CreateInvoiceComponent {
-
   invoiceForm: FormGroup;
+
+  
 
   constructor() {
     this.invoiceForm = new FormGroup({
-      companyName: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      clientName: new FormControl('', Validators.required),
-      clientAddress: new FormControl('', Validators.required),
-      items: new FormArray([this.createItem()])
+      // / Seller Details
+      SellerCompanyName: new FormControl('', Validators.required),
+      SellerTaxID: new FormControl('', Validators.required),
+      SellerCity: new FormControl('', Validators.required),
+      SellerAddress: new FormControl('', Validators.required),
+      SellerEmail: new FormControl('', Validators.required),
+      SellerPhone: new FormControl('', Validators.required),
+
+      // / Buyer Details
+      BuyerName: new FormControl('', Validators.required),
+      BuyerTaxID: new FormControl('', Validators.required),
+      BuyerEmail: new FormControl('', Validators.required),
+      BuyerCountry: new FormControl('', Validators.required),
+      BuyerCity: new FormControl('', Validators.required),
+      BuyerAddress: new FormControl('', Validators.required),
+      BuyerPhone: new FormControl('', Validators.required),
+
+      // / Items
+      items: new FormArray([this.createItem()]),
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   createItem(): FormGroup {
     return new FormGroup({
-      description: new FormControl('', Validators.required),
-      quantity: new FormControl(1, Validators.required),
-      price: new FormControl(0, Validators.required)
+      Item: new FormControl('', Validators.required),
+      Quantity: new FormControl(1, Validators.required),
+      Unit: new FormControl('', Validators.required),
+      'Unity Price': new FormControl(0, Validators.required),
+      VAT: new FormControl(0, Validators.required),
+      'Net Amount': new FormControl(0, Validators.required),
     });
   }
 
@@ -58,11 +75,11 @@ export class CreateInvoiceComponent {
 
   onSubmit(): void {
     console.log(this.invoiceForm.value);
-    // Add logic to save the invoice or generate PDF here
+    console.log('hello world');
+    this.downloadInvoice();
   }
-  
-  public downloadInvoice() {
 
+  public downloadInvoice() {
     const doc = new jsPDF({});
 
     autoTable(doc, {
@@ -114,7 +131,7 @@ export class CreateInvoiceComponent {
         [
           {
             content:
-              'გამყიდველი:' +
+              'Seller:' +
               '\nJohn Doe' +
               '\nBilling Address line 1' +
               '\nBilling Address line 2' +
@@ -127,7 +144,7 @@ export class CreateInvoiceComponent {
 
           {
             content:
-              'მყიდველი:' +
+              'Buyer:' +
               '\nCompany name' +
               '\nShipping Address line 1' +
               '\nShipping Address line 2' +
@@ -245,46 +262,6 @@ export class CreateInvoiceComponent {
             content: '$4000',
             styles: {
               halign: 'right',
-            },
-          },
-        ],
-      ],
-      theme: 'plain',
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'Terms & notes',
-            styles: {
-              halign: 'left',
-              fontSize: 14,
-            },
-          },
-        ],
-        [
-          {
-            content:
-              'orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia' +
-              'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum' +
-              'numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
-            styles: {
-              halign: 'left',
-            },
-          },
-        ],
-      ],
-      theme: 'plain',
-    });
-
-    autoTable(doc, {
-      body: [
-        [
-          {
-            content: 'This is a centered footer',
-            styles: {
-              halign: 'center',
             },
           },
         ],

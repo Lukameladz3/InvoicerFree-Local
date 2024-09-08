@@ -2,7 +2,224 @@
   width: 100%;
   height: 100%;
 
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+.details-box {
+  width: 100%;
+  min-height: fit-content;
+  
+
+  // border: 2px solid black;
+  // border-color: #fff;
+  // border-radius: 10px;
+  // box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+}
+
+.invoice-form{
+  width: 100%;
+  height: 100%;
+
+  .invoice-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    // border: 2px solid black;
+    border-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+
+    margin-bottom: 30px;
+  }
+}
+
+.seller-details,
+.buyer-details {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+
   padding: 20px;
-  box-sizing: border-box
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.seller-details{
+  border-right: 1px solid #0000001f;
+}
+
+.divider-holder {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  .divider {
+    width: 2px;
+    height: 80%;
+    border-color: #fff;
+    background-color: #0000004d;
+    border-radius: 5px;
+
+    margin: auto 0;
+  }
+}
+
+.form-items {
+  width: 100%;
+  height: 100%;
+
+  .form-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+
+    border: 1px solid #0000001f;
+    border-radius: 10px;
+    position: relative;
+    height: 40px;
+
+    label {
+      position: absolute;
+      top: -30%;
+      left: 15px;
+      background-color: white;
+    }
+
+    input {
+      border: none;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding-left: 10px;
+      border-radius: 10px;
+      font-size: 1em;
+
+      &:focus {
+        outline: none;
+        border-color: #00D369;
+        
+        box-shadow: 0 0 0 2px #00d3696b;
+      }
+    }
+  }
+}
+
+
+.row {
+
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .column {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// / tavle css
+
+table {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0 ;
 
 }
+
+thead{
+
+  tr{
+    background-color: #F2F2F2;
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
+  }
+}
+
+
+
+table tr {
+  // background-color: #f8f8f8;
+  // border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: start;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+
