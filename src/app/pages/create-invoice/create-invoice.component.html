@@ -1,8 +1,49 @@
 <!-- <button (click)="downloadInvoice()">Download invoice</button> -->
 <div class="wrapper">
   <div class="details-box">
-    <form class="invoice-form"  [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
-
+    <form
+      class="invoice-form"
+      [formGroup]="invoiceForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="invoice-header">
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input type="text" name="" id="">
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input type="text" name="" id="">
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input type="text" name="" id="">
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input type="text" name="" id="">
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input type="text" name="" id="">
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input type="text" name="" id="">
+          </div>
+        </div>
+      </div>
       <div class="invoice-content">
         <div class="seller-details">
           <div class="title">
@@ -11,42 +52,36 @@
               <!-- <button>Edit</button> -->
             </div>
           </div>
-    
+
           <div class="form-items" #formItems>
-    
             <div class="row">
               <div class="column">
                 <div class="form-item">
                   <label for="">Company Name</label>
                   <input type="text" formControlName="SellerCompanyName" />
-
                 </div>
-    
+
                 <div class="form-item">
                   <label for="">Tax ID</label>
                   <input type="text" formControlName="SellerTaxID" />
-
                 </div>
               </div>
               <div class="column">
                 <div class="form-item">
                   <label for="">Region/City</label>
                   <input type="text" formControlName="SellerCity" />
-
                 </div>
-    
+
                 <div class="form-item">
                   <label for="">address</label>
                   <input type="text" formControlName="SellerAddress" />
-
                 </div>
               </div>
-    
+
               <div class="column">
                 <div class="form-item">
                   <label for="">E-Mail</label>
                   <input type="text" formControlName="SellerEmail" />
-
                 </div>
                 <div class="form-item">
                   <label for="">Phone</label>
@@ -63,49 +98,44 @@
               <!-- <button>Edit</button> -->
             </div>
           </div>
-    
+
           <div class="form-items">
             <div class="row">
               <div class="column">
                 <div class="form-item">
                   <label for="">Name</label>
                   <input type="text" formControlName="BuyerName" />
-
                 </div>
-    
+
                 <div class="form-item">
                   <label for="">Tax ID</label>
                   <input type="text" formControlName="BuyerTaxID" />
-
                 </div>
-    
+
                 <div class="form-item">
                   <label for="">E-Mail</label>
                   <input type="text" formControlName="BuyerEmail" />
-
                 </div>
               </div>
-    
+
               <div class="column">
                 <div class="form-item">
                   <label for="">Country</label>
                   <input type="text" formControlName="BuyerCountry" />
-
                 </div>
-    
+
                 <div class="form-item">
                   <label for="">Region / City</label>
                   <input type="text" formControlName="BuyerCity" />
-
                 </div>
               </div>
-    
+
               <div class="column">
                 <div class="form-item">
                   <label for="">Address</label>
                   <input type="text" formControlName="BuyerAddress" />
                 </div>
-    
+
                 <div class="form-item">
                   <label for="">Phone</label>
                   <input type="text" formControlName="BuyerPhone" />
@@ -115,26 +145,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <table class="table table-bordered">
-        <thead class="bg-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Description</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-            <th scope="col">Total</th>
-          </tr>
-        </thead>
-        <tbody formArrayName="items">
-          <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
-            <td>{{ i + 1 }}</td>
-            <td><input type="text" formControlName="description" class="form-control"></td>
-            <td><input type="number" formControlName="quantity" class="form-control"></td>
-            <td><input type="number" formControlName="price" class="form-control"></td>
-          </tr>
-        </tbody>
-      </table> -->
 
       <table>
         <!-- <caption>Statement Summary</caption> -->
@@ -150,53 +160,147 @@
           </tr>
         </thead>
         <tbody formArrayName="items">
-          <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+          <tr
+            *ngFor="let item of items.controls; let i = index"
+            [formGroupName]="i"
+          >
             <td>
               <div class="form-control-holder">
-                <input type="text" formControlName="Item" class="form-control">
+                <input
+                  type="text"
+                  formControlName="Item"
+                  class="form-control"
+                />
               </div>
             </td>
             <td>
               <div class="form-control-holder">
-                <input type="text" formControlName="Quantity" class="form-control">
+                <input
+                  type="text"
+                  formControlName="Quantity"
+                  class="form-control"
+                />
               </div>
             </td>
             <td>
               <div class="form-control-holder">
-                <input type="text" formControlName="Unit" class="form-control">
+                <input
+                  type="text"
+                  formControlName="Unit"
+                  class="form-control"
+                />
               </div>
             </td>
             <td>
               <div class="form-control-holder">
-                <input type="text" formControlName="Unity Price" class="form-control">
+                <input
+                  type="text"
+                  formControlName="Unity Price"
+                  class="form-control"
+                />
               </div>
             </td>
             <td>
               <div class="form-control-holder">
-                <input type="text" formControlName="VAT" class="form-control">
+                <input type="text" formControlName="VAT" class="form-control" />
               </div>
             </td>
             <td>
               <div class="form-control-holder">
-                <input type="text" formControlName="Net Amount" class="form-control">
+                <input
+                  type="text"
+                  formControlName="Net Amount"
+                  class="form-control"
+                />
               </div>
             </td>
             <td>
-              <!-- <button (click)="removeItem(i)">Delete</button> -->
+              <button class="remove-item" (click)="removeItem(i)">
+                <img
+                  src="../../../assets/Images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+                  alt=""
+                />
+              </button>
             </td>
           </tr>
-          <button type="button" (click)="addItem()">Add Item</button>
+          <!-- / დამატების ღილაკის გალამაზება -->
         </tbody>
       </table>
 
+      <div class="add-item-holder">
+        <button type="button" (click)="addItem()">
+          <img
+            src="../../../assets/Images/add_36dp_75FB4C_FILL0_wght400_GRAD0_opsz40.svg"
+            alt=""
+          />
+        </button>
+      </div>
 
+      <div class="bottom-holder">
+        <div class="inputs">
+          <div class="terms-n-conditions">
+            <p>Terms And Conditions</p>
+            <div class="texarea-holder">
+              <textarea name="" id=""></textarea>
+            </div>
+          </div>
 
-      <button type="submit" class="btn btn-primary float-end mt-3">Create Invoice</button>
+          <div class="comment">
+            <p>Comment</p>
+            <div class="texarea-holder">
+              <textarea name="" id=""></textarea>
+            </div>
+          </div>
+        </div>
 
+        <div class="pay-field">
+          <div class="subtotal underline">
+            <div class="title">
+              <p>Subtotal</p>
+            </div>
+            <div class="value">
+              <p>0.00$</p>
+            </div>
+          </div>
+
+          <div class="discount">
+            <div class="title">
+              <p>discount</p>
+            </div>
+            <div class="discount-input underline">
+              <input type="number" [defaultValue]="0" />
+              <p>%</p>
+            </div>
+            <div class="value">
+              <p>-0.00$</p>
+            </div>
+          </div>
+
+          <div class="total underline">
+            <div class="title">
+              <p>Total</p>
+            </div>
+            <div class="value">
+              <p>0.00$</p>
+            </div>
+          </div>
+
+          <div class="due-pay">
+            <div class="title">
+              <p>Due Payment</p>
+            </div>
+            <div class="value">
+              <p>0.00$</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="create-invoice">
+        <button type="submit" class="btn btn-primary float-end mt-3">
+          Finish
+        </button>
+      </div>
     </form>
-
-
   </div>
-
-
 </div>

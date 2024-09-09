@@ -16,6 +16,13 @@ export interface invoiceData {
   BuyerAddress: string;
   BuyerPhone: string;
 
+  // / 
+  currency:string;
+  status:string;
+  date:string;
+  dueDate:string;
+  paymentMethod:string;
+
   items: itemData[];
 }
 

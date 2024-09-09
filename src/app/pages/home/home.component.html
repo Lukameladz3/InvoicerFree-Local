@@ -1,3 +1,7 @@
 <div class="wrapper">
-  <p>Invoice List page</p>
+  <!-- <p>Invoice List page</p> -->
+
+  @for (id of inviceIds; track id) {
+    <app-invoice-card [invoiceId]="id"></app-invoice-card>
+  }
 </div>
