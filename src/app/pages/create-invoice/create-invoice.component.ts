@@ -6,23 +6,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormItemComponent } from '../../components/form-item/form-item.component';
 import { invoiceData } from '../../Interfaces/invoiceData';
 import { InvoicerService } from '../../services/invoicer.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-invoice',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormItemComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormItemComponent, FormsModule],
   templateUrl: './create-invoice.component.html',
   styleUrl: './create-invoice.component.scss',
 })
 export class CreateInvoiceComponent {
   invoiceForm: FormGroup;
 
-  invoiceData : invoiceData | undefined;
-  
+  invoiceData: invoiceData | undefined;
 
-  constructor(
-    private invoiceService:InvoicerService,
-  ) {
+  changed!: Date;
+
+
+  constructor(private invoiceService: InvoicerService) {
     this.invoiceForm = new FormGroup({
       // / Seller Details
       SellerCompanyName: new FormControl('', Validators.required),
@@ -41,12 +42,24 @@ export class CreateInvoiceComponent {
       BuyerAddress: new FormControl('', Validators.required),
       BuyerPhone: new FormControl('', Validators.required),
 
+      date: new FormControl(Date, Validators.required),
+      dueDate: new FormControl(Date, Validators.required),
+      paymentMethod: new FormControl('', Validators.required),
+
       // / Items
       items: new FormArray([this.createItem()]),
     });
   }
 
   ngOnInit(): void {}
+
+  SendDataonChange(event: any) {
+    console.log(event.target.value);
+  }
+
+  onClick() {
+    console.log(this.changed);
+    }
 
   createItem(): FormGroup {
     return new FormGroup({
@@ -79,19 +92,15 @@ export class CreateInvoiceComponent {
 
   onSubmit(): void {
     console.log(this.invoiceForm.value);
-    this.invoiceData  = this.invoiceForm.value;
+    this.invoiceData = this.invoiceForm.value;
     console.log(this.invoiceData);
-    
+
     // this.invoiceForm.reset();
-    if (this.invoiceData){
-      this.invoiceService.saveInvoice(this.invoiceData)
+    if (this.invoiceData) {
+      // this.invoiceService.saveInvoice(this.invoiceData);
       // this.invoiceService.downloadInvoice(this.invoiceData);
-      
-      console.log(this.invoiceService.getAllInvoices());
-      
+
+      // console.log(this.invoiceService.getAllInvoices());
     }
-
   }
-
-
 }

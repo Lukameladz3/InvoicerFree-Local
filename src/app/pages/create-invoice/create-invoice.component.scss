@@ -6,23 +6,22 @@
   box-sizing: border-box;
 }
 
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
 .details-box {
   width: 100%;
   min-height: fit-content;
-
 }
 
 .invoice-form {
   width: 100%;
   height: 100%;
 
-  .invoice-header{
+  .invoice-header {
     width: 100%;
-    height: 200px;
+    // height: 200px;
     // background-color: red;
     display: flex;
     flex-wrap: wrap !important;
@@ -42,48 +41,86 @@
   }
 }
 
-.header-item-holder{
+.header-item-holder {
   width: 25%;
+  // padding: 0 5px;
+  padding-right: 5px;
+  height: fit-content;
 }
-
+.date {
+  button {
+    padding: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    margin-top: 10px;
+  }
+  input {
+    // padding: 5px;
+    // font-size: 15px;
+    width: 100%;
+    height: 100%;
+  }
+}
 .header-item {
-  padding: 5px;
+  // padding: 5px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10px 20px;
-
-  border: 1px solid #0000001f;
-  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #0000003a;
+  border-radius: 5px;
   position: relative;
   height: 40px;
+
+
 
   p {
     position: absolute;
     top: -30%;
-    left: 15px;
+    left: 10px;
     background-color: white;
+    opacity: 0.7;
   }
 
-  input {
+  .item-input,
+  select {
     border: none;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
     padding-left: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 1em;
+
+    font-family: monospace, monospace !important;
+    font-weight: 500;
 
     &:focus {
       outline: none;
       border-color: #00d369;
+      // padding: 15px;
 
       box-shadow: 0 0 0 2px #00d3696b;
     }
   }
+
+  select {
+    font-family: monospace, monospace !important;
+    font-weight: 500;
+    // letter-spacing: 0.5px;
+    option {
+      font-family: monospace, monospace !important;
+      font-weight: 500;
+      // letter-spacing: 0.5px;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+    height: 100% !important;
+  }
 }
-
-
 
 .seller-details,
 .buyer-details {
@@ -136,17 +173,33 @@
     flex-direction: column;
     margin: 10px 20px;
 
-    border: 1px solid #0000001f;
-    border-radius: 10px;
+    border: 1px solid #0000003d;
+    border-radius: 5px;
     position: relative;
     height: 40px;
 
-    label {
+    p {
       position: absolute;
+      // top: 50%;
+      // transform: translate(0, -50%);
+      pointer-events: none;
+      opacity: 0.7;
+      // / after transition
       top: -30%;
       left: 15px;
       background-color: white;
     }
+
+    // .label {
+    //   position: absolute;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   left: 10px;
+    //   color: #666;
+    //   font-size: 16px;
+    //   pointer-events: none;
+    //   transition: all 0.3s ease-in-out;
+    // }
 
     input {
       border: none;
@@ -163,6 +216,19 @@
 
         box-shadow: 0 0 0 2px #00d3696b;
       }
+    }
+
+    input:focus + .label,
+    input:not(:placeholder-shown).not-empty + .label {
+      top: 5px;
+      font-size: 12px;
+      color: #00d369;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #00d369;
+      box-shadow: 0 0 0 2px #00d3696b;
     }
   }
 }
@@ -318,7 +384,8 @@ table {
 
   display: flex;
   justify-content: space-between;
-  .inputs, .pay-field{
+  .inputs,
+  .pay-field {
     width: 40%;
 
     display: flex;
@@ -328,14 +395,15 @@ table {
     // background-color: red;
   }
 
-  .terms-n-conditions, .comment{
+  .terms-n-conditions,
+  .comment {
     width: 100%;
     height: 100%;
     position: relative;
 
     margin: 10px;
 
-    p{
+    p {
       position: absolute;
       left: 10px;
       top: -10%;
@@ -358,7 +426,7 @@ table {
         padding: 0 !important;
         resize: none;
         // background-color: red;
-  
+
         &:focus {
           outline: none;
           // border: 1px solid #00d369;
@@ -366,29 +434,29 @@ table {
         }
       }
     }
-
-
   }
 
-  .pay-field{
-
-    .subtotal, .discount, .total, .due-pay{
+  .pay-field {
+    .subtotal,
+    .discount,
+    .total,
+    .due-pay {
       width: 100%;
       display: flex;
       justify-content: space-between;
 
       margin: 10px 0;
     }
-    .underline{
+    .underline {
       padding-bottom: 5px;
 
       border-bottom: 1px solid #00000034;
     }
 
-    .discount-input{
+    .discount-input {
       display: flex;
       width: fit-content;
-      input{
+      input {
         width: 30px;
         outline: none;
         border: none;
@@ -396,15 +464,14 @@ table {
       }
     }
   }
-
 }
 
-.create-invoice{
+.create-invoice {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 
-  button{
+  button {
     background-color: rgb(0, 211, 105);
     border-color: rgb(0, 211, 105);
     color: white;
@@ -416,37 +483,31 @@ table {
 }
 
 @media screen and (max-width: 1200px) {
-
-  .column{
+  .column {
     flex-direction: column;
 
-    .form-item{
+    .form-item {
       margin: 10px 0;
     }
   }
-  
 }
 
-
 @media screen and (max-width: 800px) {
-  .invoice-content
-  {
+  .invoice-content {
     flex-direction: column;
   }
 
-  .seller-details, .buyer-details{
+  .seller-details,
+  .buyer-details {
     border: none;
     width: 100%;
     padding: 0 10px;
   }
 
-  .form-items{
-    box-sizing:border-box;
+  .form-items {
+    box-sizing: border-box;
   }
-
-
 }
-
 
 @media screen and (max-width: 600px) {
   table {
@@ -495,4 +556,10 @@ table {
   table td:last-child {
     border-bottom: 0;
   }
+}
+
+.example-full-width {
+  width: 260px;
+  height: 40px;
+  background-color: red;
 }

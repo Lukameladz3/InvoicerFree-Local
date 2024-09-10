@@ -19,8 +19,8 @@ export interface invoiceData {
   // / 
   currency:string;
   status:string;
-  date:string;
-  dueDate:string;
+  date:Date;
+  dueDate:Date;
   paymentMethod:string;
 
   items: itemData[];

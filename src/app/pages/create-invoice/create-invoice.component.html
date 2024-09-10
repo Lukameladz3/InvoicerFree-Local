@@ -10,40 +10,49 @@
         <div class="header-item-holder">
           <div class="header-item">
             <p>invoice ID</p>
-            <input type="text" name="" id="">
+            <input class="item-input" type="text" name="" id="">
           </div>
         </div>
         <div class="header-item-holder">
           <div class="header-item">
-            <p>invoice ID</p>
-            <input type="text" name="" id="">
+            <p>Currency</p>
+            <!-- <input type="text" name="" id=""> -->
+            <select name="" id="">
+              <option value="">($ | USD) US Dollar</option>
+              <option value="">(€ | EUR) Euro</option>
+              <option value="">(₹ | INR) Indian Rupee</option>
+            </select>
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item date">
+            <p>Date</p>
+            <input type="date" formControlName="date" />
+
+            <!-- <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item date">
+            <p>Payment Due Date</p>
+            <input type="date" formControlName="dueDate" />
           </div>
         </div>
         <div class="header-item-holder">
           <div class="header-item">
-            <p>invoice ID</p>
-            <input type="text" name="" id="">
-          </div>
-        </div>
-        <div class="header-item-holder">
-          <div class="header-item">
-            <p>invoice ID</p>
-            <input type="text" name="" id="">
-          </div>
-        </div>
-        <div class="header-item-holder">
-          <div class="header-item">
-            <p>invoice ID</p>
-            <input type="text" name="" id="">
-          </div>
-        </div>
-        <div class="header-item-holder">
-          <div class="header-item">
-            <p>invoice ID</p>
-            <input type="text" name="" id="">
+            <p>Payment Method</p>
+            <select name="" id="" formControlName="paymentMethod">
+              <option value="Cash Payment">Cash Payment</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+            </select>
           </div>
         </div>
       </div>
+
       <div class="invoice-content">
         <div class="seller-details">
           <div class="title">
@@ -57,34 +66,34 @@
             <div class="row">
               <div class="column">
                 <div class="form-item">
-                  <label for="">Company Name</label>
+                  <p>Company Name</p>
                   <input type="text" formControlName="SellerCompanyName" />
                 </div>
 
                 <div class="form-item">
-                  <label for="">Tax ID</label>
+                  <p >Tax ID</p>
                   <input type="text" formControlName="SellerTaxID" />
                 </div>
               </div>
               <div class="column">
                 <div class="form-item">
-                  <label for="">Region/City</label>
+                  <p>Region/City</p>
                   <input type="text" formControlName="SellerCity" />
                 </div>
 
                 <div class="form-item">
-                  <label for="">address</label>
+                  <p>address</p>
                   <input type="text" formControlName="SellerAddress" />
                 </div>
               </div>
 
               <div class="column">
                 <div class="form-item">
-                  <label for="">E-Mail</label>
+                  <p>E-Mail</p>
                   <input type="text" formControlName="SellerEmail" />
                 </div>
                 <div class="form-item">
-                  <label for="">Phone</label>
+                  <p>Phone</p>
                   <input type="text" formControlName="SellerPhone" />
                 </div>
               </div>
@@ -103,41 +112,41 @@
             <div class="row">
               <div class="column">
                 <div class="form-item">
-                  <label for="">Name</label>
+                  <p>Name</p>
                   <input type="text" formControlName="BuyerName" />
                 </div>
 
                 <div class="form-item">
-                  <label for="">Tax ID</label>
+                  <p>Tax ID</p>
                   <input type="text" formControlName="BuyerTaxID" />
                 </div>
 
                 <div class="form-item">
-                  <label for="">E-Mail</label>
+                  <p>E-Mail</p>
                   <input type="text" formControlName="BuyerEmail" />
                 </div>
               </div>
 
               <div class="column">
                 <div class="form-item">
-                  <label for="">Country</label>
+                  <p>Country</p>
                   <input type="text" formControlName="BuyerCountry" />
                 </div>
 
                 <div class="form-item">
-                  <label for="">Region / City</label>
+                  <p>Region / City</p>
                   <input type="text" formControlName="BuyerCity" />
                 </div>
               </div>
 
               <div class="column">
                 <div class="form-item">
-                  <label for="">Address</label>
+                  <p>Address</p>
                   <input type="text" formControlName="BuyerAddress" />
                 </div>
 
                 <div class="form-item">
-                  <label for="">Phone</label>
+                  <p>Phone</p>
                   <input type="text" formControlName="BuyerPhone" />
                 </div>
               </div>
@@ -304,3 +313,4 @@
     </form>
   </div>
 </div>
+
