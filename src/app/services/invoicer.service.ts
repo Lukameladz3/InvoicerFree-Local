@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { invoiceData } from '../Interfaces/invoiceData';
+import { itemData } from '../Interfaces/itemData';
 @Injectable({
   providedIn: 'root',
 })
@@ -240,17 +241,11 @@ export class InvoicerService {
     // Get existing invoices object from localStorage
     let invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
   
-    console.log("Existing invoices:", invoices);
-  
     // Add new invoice to the object
     invoices[randomId] = invoiceData;
-  
-    console.log("New invoice added:", invoices);
-  
     // Save updated invoices object back to localStorage
     localStorage.setItem('invoices', JSON.stringify(invoices));
   
-    console.log("Saved to localStorage:", localStorage.getItem('invoices'));
   
     return randomId;
     
@@ -268,32 +263,7 @@ export class InvoicerService {
 
   }
 
-  // getInvoice(id: string): invoiceData[] {
-  //   console.log('Attempting to get invoice with ID:', id);
-  
-  //   try {
-  //     const invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
-  //     // console.log('Parsed invoices:', invoices);
-  
-  //     if (!invoices[id]) {
-  //       console.warn(`No invoice found with ID: ${id}`);
-  //       return [];
-  //     }
-  
-  //     const invoice = invoices[id];
-  //     // console.log('Retrieved invoice:', invoice);
-  
-  //     if (typeof invoice !== 'object' || invoice === null) {
-  //       console.error(`Invalid invoice data for ID: ${id}`);
-  //       return [];
-  //     }
-  
-  //     return invoice as invoiceData[];
-  //   } catch (error) {
-  //     console.error('Error retrieving invoice:', error);
-  //     return [];
-  //   }
-  // }
+
 
 
   getAllInvoices() {
@@ -310,4 +280,45 @@ export class InvoicerService {
     const invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
     return Object.keys(invoices).filter(key => invoices[key] !== null && typeof invoices[key] === 'object');
   }
+
+
+  saveItem(itemData: itemData) {
+    const randomId = Math.random().toString(36).substr(2, 9);
+
+    // Get existing invoices object from localStorage
+    let invoices = JSON.parse(localStorage.getItem('items') || '{}');
+  
+    // Add new invoice to the object
+    invoices[randomId] = itemData;
+    // Save updated invoices object back to localStorage
+    localStorage.setItem('items', JSON.stringify(invoices));
+  
+    return randomId;
+    
+  }
+
+  getItem(id: string): itemData {
+    const invoices = JSON.parse(localStorage.getItem('items') || '{}');
+    console.log('items from get invoice with id : ', invoices);
+    console.log('item with id : ', invoices[id]);
+
+    return invoices[id] as itemData || {};
+
+  }
+
+  getAllitemeIds(): string[] {
+    const items = JSON.parse(localStorage.getItem('items') || '{}');
+    return Object.keys(items).filter(key => items[key] !== null && typeof items[key] === 'object');
+  }
+
+  getAllItems(){
+    const items = JSON.parse(localStorage.getItem('items') || '{}');
+    console.log("Raw items from localStorage:", items);
+    
+    const result = Object.values(items).filter(item => item !== null && typeof item === 'object');
+    console.log("Filtered items:", result);
+    
+    return result as itemData[]
+  }
+
 }

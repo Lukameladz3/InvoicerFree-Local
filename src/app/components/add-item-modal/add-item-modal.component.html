@@ -1,0 +1,64 @@
+<div class="holder">
+  <div class="title">
+    <h3>
+      {{ title }}
+    </h3>
+  </div>
+
+  <form class="add-item-inputs" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div class="add-item-input">
+      <input
+        class="item-input"
+        placeholder="Name"
+        type="text"
+        formControlName="Item"
+      />
+    </div>
+
+    <div class="add-item-input">
+      <input
+        class="item-input"
+        placeholder="Quantity"
+        type="text"
+        formControlName="Quantity"
+      />
+    </div>
+
+    <div class="add-item-input">
+      <input
+        class="item-input"
+        placeholder="Unit"
+        type="text"
+        formControlName="Unit"
+      />
+    </div>
+
+    <div class="add-item-input">
+      <input
+        class="item-input"
+        placeholder="Type"
+        type="text"
+        formControlName="type"
+      />
+    </div>
+
+    <div class="add-item-input">
+      <input
+        class="item-input"
+        placeholder="Unity Price"
+        type="text"
+        formControlName="Unity Price"
+      />
+    </div>
+  </form>
+
+  <div class="buttons">
+    <div class="cancel">
+      <button class="secondary">Cancel</button>
+    </div>
+
+    <div class="save">
+      <button type="submit" (click)="onSubmit()" class="main">Save</button>
+    </div>
+  </div>
+</div>
