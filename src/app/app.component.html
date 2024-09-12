@@ -1,0 +1,127 @@
+<div class="app-container">
+  <nav class="navbar" #navbar>
+    <div class="navbar-brand">
+      <!-- <img src="path-to-your-logo.png" alt="Kernel Logo" class="logo"> -->
+      <h3 class="brand" routerLink="/">Invoicer</h3>
+    </div>
+    <div class="navbar-menu">
+      <button class="payment-plans" routerLink="/payment-plans">
+        <span> Payment Plans </span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <aside class="sidebar" [style.top.px]="navHeight">
+      <span class="subscription-status">Annual Active - 208 days left</span>
+
+      <div class="sidebar-content">
+        <div class="select-company">
+          <div class="icon">
+            <img
+              src="../assets/Images/backup_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+              alt=""
+            />
+          </div>
+          <div class="company-content">
+            <select>
+              <option>LLC</option>
+            </select>
+            <p>Edit Company</p>
+          </div>
+        </div>
+
+        <ul class="sidebar-menu">
+          <div class="new-invoice">
+            <button
+              routerLink="/create-invoice"
+              class="btn btn-success btn-block"
+            >
+              <img
+                src="../assets/Images/add_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />
+              New Invoice
+            </button>
+          </div>
+          <li class="active">
+            <div class="sidebar-item" routerLink="/">
+              <img
+                src="../assets/Images/description_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Invoices
+            </div>
+          </li>
+          <li>
+            <div class="sidebar-item">
+              <img
+                src="../assets/Images/pending_actions_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Recurring Invoices
+            </div>
+          </li>
+          <li>
+            <div class="sidebar-item">
+              <img
+                src="../assets/Images/support_agent_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Customers
+            </div>
+          </li>
+          <li>
+            <div class="sidebar-item" routerLink="/products">
+              <img
+                src="../assets/Images/inventory_2_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Products
+            </div>
+          </li>
+          <li>
+            <div class="sidebar-item">
+              <img
+                src="../assets/Images/monitoring_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Analytics
+            </div>
+          </li>
+          <li>
+            <div class="sidebar-item">
+              <img
+                src="../assets/Images/person_apron_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Employees
+            </div>
+          </li>
+          <li>
+            <div class="sidebar-item">
+              <img
+                src="../assets/Images/function_24dp_293961_FILL0_wght400_GRAD0_opsz24.svg"
+                alt=""
+              />Calculators
+            </div>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-footer-item">
+            <img
+              src="../assets/Images/settings_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
+              alt=""
+            />Settings
+          </div>
+
+          <div class="sidebar-footer-item">
+            <img
+              src="../assets/Images/logout_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
+              alt=""
+            />Logout
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

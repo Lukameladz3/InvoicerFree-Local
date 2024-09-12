@@ -1,0 +1,315 @@
+<!-- <button (click)="downloadInvoice()">Download invoice</button> -->
+<div class="wrapper">
+  <div class="details-box">
+    <form
+      class="invoice-form"
+      [formGroup]="invoiceForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="invoice-header">
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>invoice ID</p>
+            <input class="item-input" type="text" name="" id="" />
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>Currency</p>
+            <!-- <input type="text" name="" id=""> -->
+            <select name="" id="">
+              <option value="">($ | USD) US Dollar</option>
+              <option value="">(€ | EUR) Euro</option>
+              <option value="">(₹ | INR) Indian Rupee</option>
+            </select>
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item date">
+            <p>Date</p>
+            <input type="date" formControlName="date" />
+
+            <!-- <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item date">
+            <p>Payment Due Date</p>
+            <input type="date" formControlName="dueDate" />
+          </div>
+        </div>
+        <div class="header-item-holder">
+          <div class="header-item">
+            <p>Payment Method</p>
+            <select name="" id="" formControlName="paymentMethod">
+              <option value="Cash Payment">Cash Payment</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="invoice-content">
+        <div class="seller-details">
+          <div class="title">
+            <h3>Seller Details</h3>
+            <div class="edit">
+              <!-- <button>Edit</button> -->
+            </div>
+          </div>
+
+          <div class="form-items" #formItems>
+            <div class="row">
+              <div class="column">
+                <div class="form-item">
+                  <p>Company Name</p>
+                  <input type="text" formControlName="SellerCompanyName" />
+                </div>
+
+                <div class="form-item">
+                  <p>Tax ID</p>
+                  <input type="text" formControlName="SellerTaxID" />
+                </div>
+              </div>
+              <div class="column">
+                <div class="form-item">
+                  <p>Region/City</p>
+                  <input type="text" formControlName="SellerCity" />
+                </div>
+
+                <div class="form-item">
+                  <p>address</p>
+                  <input type="text" formControlName="SellerAddress" />
+                </div>
+              </div>
+
+              <div class="column">
+                <div class="form-item">
+                  <p>E-Mail</p>
+                  <input type="text" formControlName="SellerEmail" />
+                </div>
+                <div class="form-item">
+                  <p>Phone</p>
+                  <input type="text" formControlName="SellerPhone" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buyer-details">
+          <div class="title">
+            <h3>Buyer Details</h3>
+            <div class="edit">
+              <!-- <button>Edit</button> -->
+            </div>
+          </div>
+
+          <div class="form-items">
+            <div class="row">
+              <div class="column">
+                <div class="form-item">
+                  <p>Name</p>
+                  <input type="text" formControlName="BuyerName" />
+                </div>
+
+                <div class="form-item">
+                  <p>Tax ID</p>
+                  <input type="text" formControlName="BuyerTaxID" />
+                </div>
+
+                <div class="form-item">
+                  <p>E-Mail</p>
+                  <input type="text" formControlName="BuyerEmail" />
+                </div>
+              </div>
+
+              <div class="column">
+                <div class="form-item">
+                  <p>Country</p>
+                  <input type="text" formControlName="BuyerCountry" />
+                </div>
+
+                <div class="form-item">
+                  <p>Region / City</p>
+                  <input type="text" formControlName="BuyerCity" />
+                </div>
+              </div>
+
+              <div class="column">
+                <div class="form-item">
+                  <p>Address</p>
+                  <input type="text" formControlName="BuyerAddress" />
+                </div>
+
+                <div class="form-item">
+                  <p>Phone</p>
+                  <input type="text" formControlName="BuyerPhone" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <!-- <caption>Statement Summary</caption> -->
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Unity Price</th>
+            <th scope="col">VAT</th>
+            <th scope="col">Net Amount</th>
+            <th scope="col" class="action"></th>
+          </tr>
+        </thead>
+        <tbody formArrayName="items">
+          <tr
+            *ngFor="let item of items.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <td>
+              <div class="form-control-holder">
+                <input
+                  type="text"
+                  formControlName="Item"
+                  class="form-control"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-control-holder">
+                <input
+                  type="text"
+                  formControlName="Quantity"
+                  class="form-control"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-control-holder">
+                <input
+                  type="text"
+                  formControlName="Unit"
+                  class="form-control"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-control-holder">
+                <input
+                  type="text"
+                  formControlName="Unity Price"
+                  class="form-control"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-control-holder">
+                <input type="text" formControlName="VAT" class="form-control" />
+              </div>
+            </td>
+            <td>
+              <div class="form-control-holder">
+                <input
+                  type="text"
+                  formControlName="Net Amount"
+                  class="form-control"
+                />
+              </div>
+            </td>
+            <td>
+              <button class="remove-item" (click)="removeItem(i)">
+                <img
+                  src="../../../assets/Images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+                  alt=""
+                />
+              </button>
+            </td>
+          </tr>
+          <!-- / დამატების ღილაკის გალამაზება -->
+        </tbody>
+      </table>
+
+      <div class="add-item-holder">
+        <button type="button" (click)="addItem()">
+          <img
+            src="../../../assets/Images/add_36dp_75FB4C_FILL0_wght400_GRAD0_opsz40.svg"
+            alt=""
+          />
+        </button>
+      </div>
+
+      <div class="bottom-holder">
+        <div class="inputs">
+          <div class="terms-n-conditions">
+            <p>Terms And Conditions</p>
+            <div class="texarea-holder">
+              <textarea name="" id=""></textarea>
+            </div>
+          </div>
+
+          <div class="comment">
+            <p>Comment</p>
+            <div class="texarea-holder">
+              <textarea name="" id=""></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-field">
+          <div class="subtotal underline">
+            <div class="title">
+              <p>Subtotal</p>
+            </div>
+            <div class="value">
+              <p>0.00$</p>
+            </div>
+          </div>
+
+          <div class="discount">
+            <div class="title">
+              <p>discount</p>
+            </div>
+            <div class="discount-input underline">
+              <input type="number" [defaultValue]="0" />
+              <p>%</p>
+            </div>
+            <div class="value">
+              <p>-0.00$</p>
+            </div>
+          </div>
+
+          <div class="total underline">
+            <div class="title">
+              <p>Total</p>
+            </div>
+            <div class="value">
+              <p>0.00$</p>
+            </div>
+          </div>
+
+          <div class="due-pay">
+            <div class="title">
+              <p>Due Payment</p>
+            </div>
+            <div class="value">
+              <p>0.00$</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="create-invoice">
+        <button type="submit" class="btn btn-primary float-end mt-3">
+          Finish
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

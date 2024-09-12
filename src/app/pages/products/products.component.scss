@@ -1,0 +1,150 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 3rem;
+}
+
+.main {
+  background-color: #00d369;
+  color: white;
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 25px;
+}
+
+.search {
+  width: 100%;
+  margin-bottom: 1rem;
+  .title {
+    margin-bottom: 2rem;
+    color: #00000093;
+  }
+}
+
+.search-inputs {
+  display: flex;
+}
+
+.search-input {
+  // padding: 5px;
+  width: 100%;
+  //   display: flex;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border: 1px solid #0000003a;
+  border-radius: 5px;
+  position: relative;
+  height: 40px;
+  margin-right: 25px;
+
+  .item-input {
+    border: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+
+    font-family: monospace, monospace !important;
+    font-weight: 500;
+
+    &:focus {
+      outline: none;
+      border-color: #00d369;
+      // padding: 15px;
+
+      box-shadow: 0 0 0 2px #00d3696b;
+    }
+  }
+}
+
+// / Table CSS
+
+table {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+
+
+  thead {
+    border-top: 1px solid #0000003a;
+    border-bottom: 1px solid #0000001e;
+
+    tr {
+      padding: 0.35em;
+
+      // border-top-left-radius: 10px;
+      // border-top-right-radius: 10px;
+    }
+  }
+
+  tr {
+    padding: 0.35em;
+  }
+
+  th {
+    padding: 0.625em;
+    text-align: start;
+
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: 0.625em;
+
+    box-sizing: border-box;
+  }
+}
+
+.form-control-holder {
+  width: 100%;
+  height: 30px;
+
+  // padding: 5px;
+  margin: 0 5px;
+
+  border-bottom: 1px solid #0000001f;
+
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+
+    // border-bottom: 1px solid #0000001f;
+
+    // border: 3px solid red;
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid #00d369 !important ;
+
+      // box-shadow: 0 0 0 2px #00d3696b;
+    }
+  }
+}
