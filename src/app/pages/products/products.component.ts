@@ -23,7 +23,6 @@ export class ProductsComponent {
   ){
 
      this.allItems = this.invoiceService.getAllItems()
-     console.log("all items in products page : ", this.allItems);
      
   }
 

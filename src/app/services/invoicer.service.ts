@@ -238,12 +238,9 @@ export class InvoicerService {
   saveInvoice(invoiceData: invoiceData) {
     const randomId = Math.random().toString(36).substr(2, 9);
 
-    // Get existing invoices object from localStorage
     let invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
   
-    // Add new invoice to the object
     invoices[randomId] = invoiceData;
-    // Save updated invoices object back to localStorage
     localStorage.setItem('invoices', JSON.stringify(invoices));
   
   
@@ -253,27 +250,16 @@ export class InvoicerService {
 
   getInvoice(id: string): invoiceData {
     const invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
-    console.log('invocies from get invoice with id : ', invoices);
-    console.log('invocie with id : ', invoices[id]);
-
-    console.log("type of ivoice with id : ",typeof(invoices[id]));
-    
-    // return invoices[id] || [];
     return invoices[id] as invoiceData || {};
-
   }
 
 
 
 
-  getAllInvoices() {
+  getAllInvoices():invoiceData[] {
     const invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
-    console.log("Raw invoices from localStorage:", invoices);
-    
     const result = Object.values(invoices).filter(item => item !== null && typeof item === 'object');
-    console.log("Filtered invoices:", result);
-    
-    // return result;
+    return result as invoiceData[];
   }
 
   getAllInvoiceIds(): string[] {
@@ -284,7 +270,6 @@ export class InvoicerService {
 
   saveItem(itemData: itemData) {
     const randomId = Math.random().toString(36).substr(2, 9);
-
     // Get existing invoices object from localStorage
     let invoices = JSON.parse(localStorage.getItem('items') || '{}');
   
@@ -299,8 +284,6 @@ export class InvoicerService {
 
   getItem(id: string): itemData {
     const invoices = JSON.parse(localStorage.getItem('items') || '{}');
-    console.log('items from get invoice with id : ', invoices);
-    console.log('item with id : ', invoices[id]);
 
     return invoices[id] as itemData || {};
 
@@ -313,10 +296,8 @@ export class InvoicerService {
 
   getAllItems(){
     const items = JSON.parse(localStorage.getItem('items') || '{}');
-    console.log("Raw items from localStorage:", items);
     
     const result = Object.values(items).filter(item => item !== null && typeof item === 'object');
-    console.log("Filtered items:", result);
     
     return result as itemData[]
   }

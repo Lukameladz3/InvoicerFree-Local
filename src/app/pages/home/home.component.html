@@ -1,7 +1,137 @@
 <div class="wrapper">
   <!-- <p>Invoice List page</p> -->
 
-  @for (id of inviceIds; track id) {
-    <app-invoice-card [invoiceId]="id"></app-invoice-card>
-  }
+  <div class="header">
+    <div class="title">
+      <h1>Invoices</h1>
+    </div>
+    <div class="buttons">
+      <button class="main-b">New Invoice</button>
+    </div>
+  </div>
+
+  <div class="overview">
+    <div class="overview-item">
+      <div class="title">
+        <p>Overdue</p>
+      </div>
+      <div class="value overdue">
+        <p>4430$</p>
+      </div>
+    </div>
+    <div class="overview-item">
+      <div class="title">
+        <p>Revenue this month</p>
+      </div>
+      <div class="value revenu">
+        <p>4430$</p>
+      </div>
+    </div>
+    <div class="overview-item">
+      <div class="title">
+        <p>Overdue</p>
+      </div>
+      <div class="value">
+        <p>4430$</p>
+      </div>
+    </div>
+    <div class="overview-item">
+      <div class="title">
+        <p>Overdue</p>
+      </div>
+      <div class="value">
+        <p>4430$</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="search">
+    <div class="title">
+      <h3>Search Invoice</h3>
+    </div>
+
+    <div class="search-inputs">
+      <div class="search-input">
+        <input class="item-input" placeholder="By Customer" type="text" />
+      </div>
+
+      <div class="search-input">
+        <input
+          class="item-input"
+          type="text"
+          placeholder="From"
+          onfocus="(this.type='date')"
+          onblur="(this.type='text')"
+        />
+      </div>
+
+      <div class="search-input">
+        <input
+          class="item-input"
+          type="text"
+          placeholder="To"
+          onfocus="(this.type='date')"
+          onblur="(this.type='text')"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="status-filter">
+    <button class="status" (click)="toggleStatus('all')">
+      <p class="name all">ALL</p>
+      <span class="count all-span">1</span>
+    </button>
+    <button class="status" (click)="toggleStatus('paid')">
+      <p class="name paid">Paid</p>
+      <span class="count paid-span">1</span>
+    </button>
+    <button class="status icon-expand" (click)="toggleStatus('unpaid')">
+      <p class="name unpaid">unpaid</p>
+      <span class="count unpaid-span">1</span>
+    </button>
+    <button class="status" (click)="toggleStatus('overdue')">
+      <p class="name overdue">overdue</p>
+      <span class="count overdue-span">1</span>
+    </button>
+  </div>
+
+  <table>
+    <!-- <caption>Statement Summary</caption> -->
+    <thead>
+      <tr>
+        <th scope="col">Status</th>
+        <th scope="col">Due In</th>
+        <th scope="col">Date</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Client</th>
+        <th scope="col">Invoice #</th>
+      </tr>
+    </thead>
+    <tbody formArrayName="items">
+      <tr *ngFor="let invoice of invoices">
+        <td>
+          <p>{{ invoice.status }}</p>
+        </td>
+        <td>
+          <p>{{ invoice.dueDate }}</p>
+        </td>
+        <td>
+          <p>{{ invoice.date }}</p>
+        </td>
+        <td>
+          <!-- / price -->
+          <p>1000$</p>
+        </td>
+        <td>
+          <p>{{ invoice.BuyerName }}</p>
+        </td>
+        <td>
+          <!-- / invoice ID -->
+          <p>#001322</p>
+        </td>
+      </tr>
+      <!-- / დამატების ღილაკის გალამაზება -->
+    </tbody>
+  </table>
 </div>

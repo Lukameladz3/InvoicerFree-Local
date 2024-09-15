@@ -6,9 +6,6 @@
   box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
-}
 
 .header {
   width: 100%;
@@ -27,6 +24,7 @@
   border-radius: 6px;
 
   padding: 10px 25px;
+  cursor: pointer;
 }
 
 .search {
