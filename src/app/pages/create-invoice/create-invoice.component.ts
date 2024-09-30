@@ -95,9 +95,9 @@ export class CreateInvoiceComponent {
     this.invoiceData = this.invoiceForm.value;
     console.log(this.invoiceData);
 
-    // this.invoiceForm.reset();
+    this.invoiceForm.reset();
     if (this.invoiceData) {
-      // this.invoiceService.saveInvoice(this.invoiceData);
+      this.invoiceService.saveInvoice(this.invoiceData);
       // this.invoiceService.downloadInvoice(this.invoiceData);
 
       // console.log(this.invoiceService.getAllInvoices());

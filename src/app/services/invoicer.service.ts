@@ -266,14 +266,14 @@ export class InvoicerService {
 
 
 
-  getAllInvoices() {
+  getAllInvoices(): invoiceData[] {
     const invoices = JSON.parse(localStorage.getItem('invoices') || '{}');
     console.log("Raw invoices from localStorage:", invoices);
     
     const result = Object.values(invoices).filter(item => item !== null && typeof item === 'object');
     console.log("Filtered invoices:", result);
     
-    // return result;
+    return result as invoiceData[];
   }
 
   getAllInvoiceIds(): string[] {
